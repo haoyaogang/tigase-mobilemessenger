@@ -190,4 +190,12 @@
     <string name="face_recently">Recently</string>
     <string name="face_Emoji">Emoji</string>
     <string name="face_set_one">Default</string>
+  <string name="action_sign_in_cancel">Cancel</string>
+
+    <string name="login_checking">Checking connection</string>
+    <string name="login_connected">Connected to server</string>
+    <string name="login_checking_password">Checking password</string>
+    <string name="login_password_valid">Password valid</string>
+    <string name="login_password_invalid">Password invalid</string>
+    <string name="login_successful">Connection successful</string>
 </resources>

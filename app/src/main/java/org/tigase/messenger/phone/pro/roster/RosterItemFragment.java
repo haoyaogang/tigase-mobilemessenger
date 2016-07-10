@@ -164,7 +164,7 @@ public class RosterItemFragment extends Fragment {
 		};
 		recyclerView.setAdapter(adapter);
 
-		registerForContextMenu(recyclerView);
+			registerForContextMenu(recyclerView);
 
 		refreshRoster();
 

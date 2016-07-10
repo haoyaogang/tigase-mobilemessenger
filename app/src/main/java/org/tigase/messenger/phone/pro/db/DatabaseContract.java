@@ -195,6 +195,7 @@ public final class DatabaseContract {
 		public final static int ITEM_TYPE_VIDEO = 4;
 		public final static int ITEM_TYPE_ERROR = 5;
 		public final static int ITEM_TYPE_GROUPCHAT_MESSAGE = 6;
+		public final static int ITEM_TYPE_SYSTEM_MESSAGE = 7;
 
 		/**
 		 * Incoming message or object.
