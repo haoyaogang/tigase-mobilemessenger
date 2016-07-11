@@ -16,9 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
+//import butterknife.OnClick;
 import org.tigase.messenger.phone.pro.MainActivity;
 import org.tigase.messenger.phone.pro.R;
 import org.tigase.messenger.phone.pro.conversations.AbstractConversationActivity;
@@ -33,11 +33,11 @@ import tigase.jaxmpp.core.client.xmpp.stanzas.Message;
 
 public class MucItemFragment extends Fragment {
 
-	@Bind(R.id.chat_list)
+//	@Bind(R.id.chat_list)
 	RecyclerView recyclerView;
-	@Bind(R.id.messageText)
+//	@Bind(R.id.messageText)
 	EditText message;
-	@Bind(R.id.send_button)
+//	@Bind(R.id.send_button)
 	ImageView sendButton;
 	private Room room;
 	private Uri uri;
@@ -91,8 +91,16 @@ public class MucItemFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View root = inflater.inflate(R.layout.fragment_chatitem_list, container, false);
-		ButterKnife.bind(this, root);
-
+//		ButterKnife.bind(this, root);
+		 recyclerView = (RecyclerView)root.findViewById(R.id.chat_list);
+		 message = (EditText)root.findViewById(R.id.messageText);
+		sendButton =(ImageView) root.findViewById(R.id.send_button);
+		sendButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				send();
+			}
+		});
 		message.setEnabled(false);
 
 		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -124,7 +132,7 @@ public class MucItemFragment extends Fragment {
 		(new MucItemFragment.DBUpdateTask()).execute();
 	}
 
-	@OnClick(R.id.send_button)
+//	@OnClick(R.id.send_button)
 	void send() {
 		String body = this.message.getText().toString();
 		if (body == null || body.trim().isEmpty())

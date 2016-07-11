@@ -28,6 +28,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,9 +36,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.*;
 import android.widget.Toast;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
+//import butterknife.OnClick;
 import org.tigase.messenger.phone.pro.DividerItemDecoration;
 import org.tigase.messenger.phone.pro.MainActivity;
 import org.tigase.messenger.phone.pro.R;
@@ -58,7 +59,7 @@ import tigase.jaxmpp.core.client.xmpp.modules.roster.RosterStore;
 public class RosterItemFragment extends Fragment {
 
 	private static final boolean SHOW_OFFLINE_DEFAULT = true;
-	@Bind(R.id.roster_list)
+//	@Nullable @Bind(R.id.roster_list)
 	RecyclerView recyclerView;
 	private OnRosterItemIteractionListener mListener;
 	private MyRosterItemRecyclerViewAdapter adapter;
@@ -104,11 +105,16 @@ public class RosterItemFragment extends Fragment {
 		fragment.setArguments(args);
 		return fragment;
 	}
-
-	@OnClick(R.id.roster_add_contact)
+View mRosterAdd;
+//	@OnClick(R.id.roster_add_contact)
 	void onAddContactClick() {
 		Intent intent = new Intent(getContext(), EditContactActivity.class);
 		startActivity(intent);
+	}
+
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
 	}
 
 	@Override
@@ -150,8 +156,15 @@ public class RosterItemFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View root = inflater.inflate(R.layout.fragment_rosteritem_list, container, false);
-		ButterKnife.bind(this, root);
-
+//		ButterKnife.bind(this, root);
+		mRosterAdd = root.findViewById(R.id.roster_add_contact);
+		mRosterAdd.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				onAddContactClick();
+			}
+		});
+        recyclerView = (RecyclerView) root.findViewById(R.id.roster_list);
 		// Set the adapter
 		recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
 		recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));

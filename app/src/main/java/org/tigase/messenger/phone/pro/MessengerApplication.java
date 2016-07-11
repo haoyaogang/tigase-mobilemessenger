@@ -26,6 +26,8 @@ import android.content.Intent;
 import org.tigase.messenger.phone.pro.service.XMPPService;
 import org.tigase.messenger.phone.pro.utils.AvatarHelper;
 
+//import butterknife.ButterKnife;
+
 /**
  * Created by bmalkow on 16.03.16.
  */
@@ -39,6 +41,7 @@ public class MessengerApplication extends Application {
 		Intent ssIntent = new Intent(this, XMPPService.class);
 		ssIntent.setAction("connect-all");
 		startService(ssIntent);
+		//ButterKnife.setDebug(true);
 	}
 
 }

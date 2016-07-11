@@ -13,9 +13,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
+//import butterknife.OnClick;
 import org.tigase.messenger.phone.pro.R;
 import org.tigase.messenger.phone.pro.account.Configure;
 import org.tigase.messenger.phone.pro.service.XMPPService;
@@ -34,14 +34,15 @@ public class JoinMucActivity extends AppCompatActivity {
 
 	private final ArrayList<BareJID> accountsList = new ArrayList<>();
 
-	@Bind(R.id.contact_account)
+//	@Bind(R.id.contact_account)
 	Spinner mAccountSelector;
 
-	@Bind(R.id.join_room_jid)
+//	@Bind(R.id.join_room_jid)
 	EditText mRoomJid;
 
-	@Bind(R.id.join_room_nickname)
+//	@Bind(R.id.join_room_nickname)
 	EditText mNickname;
+	View mContactButton;
 
 	private ArrayAdapter<BareJID> sa;
 
@@ -75,7 +76,7 @@ public class JoinMucActivity extends AppCompatActivity {
 		}
 	}
 
-	@OnClick(R.id.contact_add_button)
+//	@OnClick(R.id.contact_add_button)
 	void onClickJoin() {
 		final BareJID account = BareJID.bareJIDInstance(mAccountSelector.getSelectedItem().toString());
 		//yaogang.hao muc domain now only room name
@@ -114,8 +115,21 @@ public class JoinMucActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_join_muc);
-		ButterKnife.bind(this);
+//		ButterKnife.bind(this);
 
+
+		 mAccountSelector = (Spinner)findViewById(R.id.contact_account);
+
+		 mRoomJid = (EditText)findViewById(R.id.join_room_jid);
+
+		 mNickname = (EditText)findViewById(R.id.join_room_nickname);
+		mContactButton = findViewById(R.id.contact_add_button);
+		mContactButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				onClickJoin();
+			}
+		});
 		this.sa = new ArrayAdapter<>(getBaseContext(), R.layout.account_list_item, R.id.account_name, accountsList);
 		mAccountSelector.setAdapter(sa);
 		mAccountSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

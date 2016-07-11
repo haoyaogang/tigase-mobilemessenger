@@ -26,31 +26,38 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
 import org.tigase.messenger.phone.pro.R;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 
-	@Bind(R.id.contact_display_name)
+//	@Bind(R.id.contact_display_name)
 	TextView mContactName;
 
-	@Bind(R.id.last_message)
+//	@Bind(R.id.last_message)
 	TextView mLastMessage;
 
-	@Bind(R.id.contact_avatar)
+//	@Bind(R.id.contact_avatar)
 	ImageView mContactAvatar;
 
-	@Bind(R.id.contact_presence)
+//	@Bind(R.id.contact_presence)
 	ImageView mStatus;
 
-	@Bind(R.id.chat_delivery_status)
+//	@Bind(R.id.chat_delivery_status)
 	ImageView mDeliveryStatus;
 
 	public ViewHolder(View itemView) {
 		super(itemView);
-		ButterKnife.bind(this, itemView);
+//		ButterKnife.bind(this, itemView);
+		mContactName = (TextView)itemView.findViewById(R.id.contact_display_name);
+		mLastMessage = (TextView)itemView.findViewById(R.id.last_message);
+		mContactAvatar = (ImageView)itemView.findViewById(R.id.contact_avatar);
+		mStatus = (ImageView)itemView.findViewById(R.id.contact_presence);
+		mDeliveryStatus = (ImageView)itemView.findViewById(R.id.chat_delivery_status);
+
 	}
+
 
 	public void setContextMenu(final int menuId, final PopupMenu.OnMenuItemClickListener menuClick) {
 		itemView.setOnLongClickListener(new View.OnLongClickListener() {

@@ -15,8 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
 import org.tigase.messenger.phone.pro.DividerItemDecoration;
 import org.tigase.messenger.phone.pro.MainActivity;
 import org.tigase.messenger.phone.pro.R;
@@ -34,7 +34,7 @@ import tigase.jaxmpp.core.client.xmpp.stanzas.Stanza;
 
 public class ConnectionStatusesFragment extends Fragment {
 
-	@Bind(R.id.servers_list)
+//	@Bind(R.id.servers_list)
 	RecyclerView recyclerView;
 	private StatusesRecyclerViewAdapter adapter;
 	private Runnable refreshRun = new Runnable() {
@@ -136,8 +136,8 @@ public class ConnectionStatusesFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View root = inflater.inflate(R.layout.fragment_connectionstatus_list, container, false);
-		ButterKnife.bind(this, root);
-
+		//ButterKnife.bind(this, root);
+	    recyclerView = (RecyclerView) root.findViewById(R.id.servers_list);
 		// Set the adapter
 		recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
 		recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));

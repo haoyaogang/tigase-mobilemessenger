@@ -26,20 +26,20 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
 
 public class AboutActivity extends AppCompatActivity {
 
-	@Bind(R.id.textView3)
+	//@Bind(R.id.textView3)
 	TextView tv;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about);
-		ButterKnife.bind(this);
-
+		//ButterKnife.bind(this);
+		initview();
 		ActionBar actionBar = getSupportActionBar();
 		if (actionBar != null) {
 			actionBar.setDisplayHomeAsUpEnabled(true);
@@ -52,5 +52,11 @@ public class AboutActivity extends AppCompatActivity {
 		} catch (Exception e) {
 		}
 	}
+	public void initview()
+	{
+		tv = (TextView)findViewById(R.id.textView3);
+
+	}
+
 
 }

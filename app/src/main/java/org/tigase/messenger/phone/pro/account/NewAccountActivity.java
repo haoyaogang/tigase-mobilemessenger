@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import android.view.View;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
+//import butterknife.OnClick;
 import org.tigase.messenger.phone.pro.R;
 
 public class NewAccountActivity extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class NewAccountActivity extends AppCompatActivity {
 	public static final int LOGIN_REQUEST = 1;
 	public static final int CREATE_REQUEST = 2;
 
-	@Bind(R.id.textView3)
+//	@Bind(R.id.textView3)
 	TextView tv;
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -31,7 +32,22 @@ public class NewAccountActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_account);
-		ButterKnife.bind(this);
+//		ButterKnife.bind(this);
+		tv = (TextView) findViewById(R.id.textView3);
+		mCreateNewButton = findViewById(R.id.createNewAccountButton);
+		mCreateNewButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				onCreateNewAccountButtonClick();
+			}
+		});
+		mExistingButton = findViewById(R.id.useExistingAccountButton);
+		mExistingButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				onUseExistingAccountButtonClick();
+			}
+		});
 
 		try {
 			PackageInfo pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -40,14 +56,14 @@ public class NewAccountActivity extends AppCompatActivity {
 		} catch (Exception e) {
 		}
 	}
-
-	@OnClick(value = R.id.createNewAccountButton)
+   View mCreateNewButton;
+//	@OnClick(value = R.id.createNewAccountButton)
 	void onCreateNewAccountButtonClick() {
 		Intent intent = new Intent(this, CreateAccountActivity.class);
 		startActivityForResult(intent, CREATE_REQUEST);
 	}
-
-	@OnClick(value = R.id.useExistingAccountButton)
+  View mExistingButton;
+//	@OnClick(value = R.id.useExistingAccountButton)
 	void onUseExistingAccountButtonClick() {
 		Intent intent = new Intent(this, LoginActivity.class);
 		startActivityForResult(intent, LOGIN_REQUEST);

@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
+//import butterknife.OnClick;
 import org.tigase.messenger.phone.pro.R;
 import org.tigase.messenger.phone.pro.service.XMPPService;
 import org.tigase.messenger.phone.pro.utils.AvatarHelper;
@@ -32,14 +32,17 @@ import tigase.jaxmpp.core.client.xmpp.stanzas.Stanza;
 
 public class SubscriptionRequestActivity extends AppCompatActivity {
 
-	@Bind(R.id.contact_xmppid)
+//	@Bind(R.id.contact_xmppid)
 	EditText xmppId;
-	@Bind(R.id.contact_display_name)
+//	@Bind(R.id.contact_display_name)
 	EditText mName;
-	@Bind(R.id.user_avatar)
+//	@Bind(R.id.user_avatar)
 	ImageView avatar;
-	@Bind(R.id.user_details_form)
+//	@Bind(R.id.user_details_form)
 	LinearLayout mDetailsForm;
+	View mAddButton;
+	View mRejectButton;
+
 	private BareJID jid;
 	private String account;
 	private BroadcastReceiver avatarUpdatedListener = new BroadcastReceiver() {
@@ -92,7 +95,7 @@ public class SubscriptionRequestActivity extends AppCompatActivity {
 		set(R.id.contact_vcard_work, vcard.getOrgName());
 	}
 
-	@OnClick(R.id.contact_add_button)
+//	@OnClick(R.id.contact_add_button)
 	void onAddClick() {
 		final String name = mName.getText().toString();
 		(new AsyncTask<Void, Void, Void>() {
@@ -132,7 +135,27 @@ public class SubscriptionRequestActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_subscription_request);
-		ButterKnife.bind(this);
+//		ButterKnife.bind(this);
+
+
+		 xmppId = (EditText)findViewById(R.id.contact_xmppid);
+		 mName = (EditText)findViewById(R.id.contact_display_name);
+		 avatar = (ImageView)findViewById(R.id.user_avatar);
+		 mDetailsForm = (LinearLayout)findViewById(R.id.user_details_form);
+		 mAddButton = findViewById(R.id.contact_add_button);
+		mAddButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				onAddClick();
+			}
+		});
+		mRejectButton = findViewById(R.id.contact_reject_button);
+		mRejectButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				onRejectClick();
+			}
+		});
 
 		Bundle extras = getIntent().getExtras();
 		this.account = extras.getString("account_name");
@@ -154,7 +177,7 @@ public class SubscriptionRequestActivity extends AppCompatActivity {
 		super.onDestroy();
 	}
 
-	@OnClick(R.id.contact_reject_button)
+//	@OnClick(R.id.contact_reject_button)
 	void onRejectClick() {
 		(new AsyncTask<Void, Void, Void>() {
 			@Override

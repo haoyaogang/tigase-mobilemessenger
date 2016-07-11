@@ -37,8 +37,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
 import org.tigase.messenger.phone.pro.MainActivity;
 import org.tigase.messenger.phone.pro.R;
 import org.tigase.messenger.phone.pro.db.DatabaseContract;
@@ -59,13 +59,13 @@ import java.util.Date;
 
 public class ChatItemFragment extends Fragment  implements FaceFragment.OnEmojiClickListener{
 
-	@Bind(R.id.chat_list)
+//	@Bind(R.id.chat_list)
 	RecyclerView recyclerView;
-	@Bind(R.id.messageText)
+//	@Bind(R.id.messageText)
 	EditText message;
-	@Bind(R.id.send_button)
+//	@Bind(R.id.send_button)
 	ImageView sendButton;
-	@Bind(R.id.chat_textview)
+//	@Bind(R.id.chat_textview)
 	TextView chat_textview;
 	private Chat chat;
 	private Context context;
@@ -181,7 +181,11 @@ public class ChatItemFragment extends Fragment  implements FaceFragment.OnEmojiC
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View root = inflater.inflate(R.layout.fragment_chatitem_list, container, false);
-		ButterKnife.bind(this, root);
+//		ButterKnife.bind(this, root);
+		 recyclerView = (RecyclerView) root.findViewById(R.id.chat_list);
+		 message = (EditText)root.findViewById(R.id.messageText);
+		 sendButton =(ImageView) root.findViewById(R.id.send_button);
+		 chat_textview = (TextView) root.findViewById(R.id.chat_textview);
 
 		message.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 			@Override

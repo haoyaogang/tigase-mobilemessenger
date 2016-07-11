@@ -33,9 +33,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.*;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
+//import butterknife.OnClick;
 import org.tigase.messenger.phone.pro.DividerItemDecoration;
 import org.tigase.messenger.phone.pro.MainActivity;
 import org.tigase.messenger.phone.pro.R;
@@ -74,7 +74,7 @@ public class OpenChatItemFragment extends Fragment {
 			refreshChatlist();
 		}
 	};
-	@Bind(R.id.openchats_list)
+//	@Bind(R.id.openchats_list)
 	RecyclerView recyclerView;
 	private OnAddChatListener mAddChatListener;
 	private MyOpenChatItemRecyclerViewAdapter adapter;
@@ -128,7 +128,8 @@ public class OpenChatItemFragment extends Fragment {
 		return fragment;
 	}
 
-	@OnClick(R.id.roster_add_chat)
+	View mRosterAdd;
+//	@OnClick(R.id.roster_add_chat)
 	void onAddContactClick() {
 
 		mAddChatListener.onAddChatClick();
@@ -204,8 +205,15 @@ public class OpenChatItemFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View root = inflater.inflate(R.layout.fragment_openchatitem_list, container, false);
-		ButterKnife.bind(this, root);
-
+//		ButterKnife.bind(this, root);
+		mRosterAdd = root.findViewById(R.id.roster_add_chat);
+		mRosterAdd.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				onAddContactClick();
+			}
+		});
+		recyclerView =(RecyclerView) root.findViewById(R.id.openchats_list);
 		recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
 		recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 		this.adapter = new MyOpenChatItemRecyclerViewAdapter(getContext(), null, mListener) {

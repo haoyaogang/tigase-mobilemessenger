@@ -11,8 +11,8 @@ import android.widget.Toast;
 import org.tigase.messenger.phone.pro.R;
 import org.tigase.messenger.phone.pro.service.SecureTrustManagerFactory;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
 import tigase.jaxmpp.android.Jaxmpp;
 import tigase.jaxmpp.core.client.AsyncCallback;
 import tigase.jaxmpp.core.client.BareJID;
@@ -29,7 +29,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private EditText mXMPPIDView;
     private EditText mPasswordView;
     private EditText mNicknameView;
-    @Bind(R.id.email_sign_in_button)
+//    @Bind(R.id.email_sign_in_button)
     Button mEmailSignInButton;
 
     private final Jaxmpp contact = new Jaxmpp();
@@ -38,7 +38,10 @@ public class CreateAccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
-        ButterKnife.bind(this);
+//        ButterKnife.bind(this);
+
+
+        mEmailSignInButton = (Button)findViewById(R.id.email_sign_in_button);
         // Set up the login form.
         mXMPPIDView = (EditText) findViewById(R.id.xmppid);
         mPasswordView = (EditText) findViewById(R.id.password);

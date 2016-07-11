@@ -35,8 +35,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
 import org.tigase.messenger.jaxmpp.android.chat.MarkAsRead;
 import org.tigase.messenger.phone.pro.R;
 import org.tigase.messenger.phone.pro.conversations.AbstractConversationActivity;
@@ -51,9 +51,9 @@ import tigase.jaxmpp.core.client.JID;
 public class ChatActivity extends AbstractConversationActivity {
 
 	private final ContactPresenceChangeObserver contactPresenceChangeObserver = new ContactPresenceChangeObserver();
-	@Bind(R.id.contact_display_name)
+//	@Bind(R.id.contact_display_name)
 	TextView mContactName;
-	@Bind(R.id.contact_presence)
+//	@Bind(R.id.contact_presence)
 	ImageView mContactPresence;
 	private int openChatId;
 	private Uri contactUri;
@@ -131,7 +131,9 @@ public class ChatActivity extends AbstractConversationActivity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chat);
-		ButterKnife.bind(this);
+//		ButterKnife.bind(this);
+		mContactName = (TextView) findViewById(R.id.contact_display_name);
+		mContactPresence = (ImageView) findViewById(R.id.contact_presence);
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);

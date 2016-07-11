@@ -51,9 +51,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
+//import butterknife.OnClick;
 import org.tigase.messenger.phone.pro.R;
 import org.tigase.messenger.phone.pro.service.MobileModeFeature;
 import org.tigase.messenger.phone.pro.service.SecureTrustManagerFactory;
@@ -82,9 +82,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 	 */
 	private static final int REQUEST_READ_CONTACTS = 0;
 	private static final String TAG = "LoginActivity";
-	@Bind(R.id.account_active)
+//	@Bind(R.id.account_active)
 	Switch mActiveView;
-	@Bind(R.id.email_sign_in_button)
+//	@Bind(R.id.email_sign_in_button)
 	Button mEmailSignInButton;
 	/**
 	 * Keep track of the login task to ensure we can cancel it if requested.
@@ -197,8 +197,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		// TODO: Replace this with your own logic
 		return password.length() > 4;
 	}
-
-	@OnClick(R.id.cancel_button)
+	View mCancelButton;
+//	@OnClick(R.id.cancel_button)
 	void onCancelButton() {
 		finish();
 	}
@@ -207,10 +207,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		ButterKnife.bind(this);
-
+//		ButterKnife.bind(this);
+		mCancelButton = findViewById(R.id.cancel_button);
+		mCancelButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				onCancelButton();
+			}
+		});
 		mAccountManager = AccountManager.get(this);
 
+
+		mActiveView = (Switch)findViewById(R.id.account_active);
+		mEmailSignInButton = (Button)findViewById(R.id.email_sign_in_button);
 		// Set up the login form.
 		mXMPPIDView = (EditText) findViewById(R.id.xmppid);
 
